@@ -8,13 +8,13 @@ def bonus
          {name: "Benvolio", age: "17", attitude: "worried"},
          {name: "Steven", age: "30", attitude: "confused"}
       ]
-   }, 
+   },
    :capulet => {
       :patriarch => {name: "Lord Capulet", age: "50"},
       :matriarch => {name: "Lady Capulet", age: "51"},
       :heroine => {name: "Juliet", age: "15", status: "alive"},
       :heroine_friends => [
-          {name: "Mercutio", age: "18", attitude: "hot-headed"}, 
+          {name: "Mercutio", age: "18", attitude: "hot-headed"},
           {name: "Nurse", age: "44", attitude: "worried"}
       ]
    }
@@ -22,8 +22,38 @@ def bonus
 
   #code your solution here:
 
-  
 
+######## OLD METHOD i was unhappy with
+##
+##      epic_tragedy.collect do |key,value|
+##    if epic_tragedy[:montague][:hero][:status] == "alive"
+##      epic_tragedy[:montague][:hero][:status] = "dead"
+##    elsif epic_tragedy[:capulet][:heroine][:status] == "alive"
+##      epic_tragedy[:capulet][:heroine][:status] = "dead"
+##
+##    end
+##  end
+##
+########
+
+## New method I feel is a better solution
+epic_tragedy.collect do |key,value_hash|
+
+  value_hash.collect do |name,attribute|
+    if name == :hero || name == :heroine
+
+      attribute.collect do |k,v|
+        if k == :status
+            epic_tragedy[key][name][k] = "dead"
+
+        end
+
+      end
+
+    end
+
+  end
+end
   #Don't touch the following line! The `bonus` method must return our newly modified epic tragedy hash
   epic_tragedy
 end
