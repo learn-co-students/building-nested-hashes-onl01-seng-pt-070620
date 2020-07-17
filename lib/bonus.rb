@@ -21,6 +21,17 @@ def bonus
   }
 
   #code your solution here:
+def bonus(epic_tragedy)
+epic_tragedy.each {|montague,hero, status| status.replace << "dead"}
+  puts epic_tragedy
+end
+
+def bonus(epic_tragedy)
+epic_tragedy.each  {|capulet, heroine, status|status.replace << "dead"}
+  puts epic_tragedy
+end
+
+
 
   
 
